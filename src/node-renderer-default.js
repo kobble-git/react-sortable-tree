@@ -60,9 +60,10 @@ const NodeRendererDefault = ({
         );
     } else {
         // Show the handle used to initiate a drag-and-drop
-        handle = connectDragSource((
-            <div className={styles.moveHandle} />
-        ), { dropEffect: 'copy' });
+        let def = (<div className={styles.moveHandle} />);
+        let hd = otherProps.dragHandle ? otherProps.dragHandle : def;
+        if (otherProps.dragHandle) delete otherProps.dragHandle;
+        handle = connectDragSource(hd, { dropEffect: 'copy' });
     }
 
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);

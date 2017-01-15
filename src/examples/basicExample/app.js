@@ -270,6 +270,7 @@ class App extends Component {
 
                     <div style={treeContainerStyle}>
                         <SortableTree
+                            rowHeight={82}
                             treeData={treeData}
                             onChange={this.updateTreeData}
                             onMoveNode={({ node, treeIndex, path }) =>

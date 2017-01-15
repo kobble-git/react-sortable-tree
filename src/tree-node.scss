@@ -1,3 +1,6 @@
+$kobble-background-color : #1f282d;
+$kobble-theme-color : #4ab74f;
+
 .node {
     min-width: 100%;
     white-space: nowrap;
@@ -30,7 +33,7 @@
 %blackLineBase {
     position: absolute;
     content: '';
-    background-color: black;
+    background-color: $kobble-background-color;
 }
 
 /**
@@ -102,8 +105,8 @@
 
 /* Highlight line for pointing to dragged row destination
    ========================================================================== */
-$highlight-color: #36C2F6;
-$highlight-line-size: 8px; // Make it an even number for clean rendering
+$highlight-color: #dddddd; //#36C2F6;
+$highlight-line-size: 0px; // Make it an even number for clean rendering
 
 /**
  * +--+--+
