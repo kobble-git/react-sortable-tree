@@ -66,6 +66,8 @@ const NodeRendererDefault = ({
         handle = connectDragSource(hd, { dropEffect: 'copy' });
     }
 
+    const contents = otherProps.contents && otherProps.contents.length > 0 ? otherProps.contents[0] : undefined;;
+    if (otherProps.contents) delete otherProps.contents;
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
 
     return (
@@ -108,38 +110,38 @@ const NodeRendererDefault = ({
                         }}
                     >
                         {handle}
+                        {contents ||
+                          <div className={styles.rowContents}>
+                              <div className={styles.rowLabel}>
+                                  <span
+                                      className={styles.rowTitle +
+                                          (node.subtitle ? ` ${styles.rowTitleWithSubtitle}` : '')
+                                      }
+                                  >
+                                      {typeof node.title === 'function' ?
+                                          node.title({node, path, treeIndex }) :
+                                          node.title
+                                      }
+                                  </span>
 
-                        <div className={styles.rowContents}>
-                            <div className={styles.rowLabel}>
-                                <span
-                                    className={styles.rowTitle +
-                                        (node.subtitle ? ` ${styles.rowTitleWithSubtitle}` : '')
-                                    }
-                                >
-                                    {typeof node.title === 'function' ?
-                                        node.title({node, path, treeIndex }) :
-                                        node.title
-                                    }
-                                </span>
+                                  {node.subtitle &&
+                                      <span className={styles.rowSubtitle}>
+                                          {typeof node.subtitle === 'function' ?
+                                              node.subtitle({node, path, treeIndex }) :
+                                              node.subtitle
+                                          }
+                                      </span>
+                                  }
+                              </div>
 
-                                {node.subtitle &&
-                                    <span className={styles.rowSubtitle}>
-                                        {typeof node.subtitle === 'function' ?
-                                            node.subtitle({node, path, treeIndex }) :
-                                            node.subtitle
-                                        }
-                                    </span>
-                                }
-                            </div>
-
-                            <div className={styles.rowToolbar}>
-                                {buttons && buttons.map((btn, index) => (
-                                    <div key={index} className={styles.toolbarButton}>
-                                        {btn}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                              <div className={styles.rowToolbar}>
+                                  {buttons && buttons.map((btn, index) => (
+                                      <div key={index} className={styles.toolbarButton}>
+                                          {btn}
+                                      </div>
+                                  ))}
+                              </div>
+                          </div>}
                     </div>
                 )}
             </div>
