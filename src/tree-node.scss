@@ -33,7 +33,7 @@ $kobble-theme-color : #4ab74f;
 %blackLineBase {
     position: absolute;
     content: '';
-    background-color: $kobble-background-color;
+    background-color: transparent; //$kobble-background-color;
 }
 
 /**
