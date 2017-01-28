@@ -119,7 +119,7 @@ const TreeNode = ({
 
             <div
                 className={styles.nodeContent}
-                style={{ left: scaffoldBlockPxWidth * scaffoldBlockCount }}
+                style={{ boxSizing: "border-box", left: scaffoldBlockPxWidth * scaffoldBlockCount, width: "100%", paddingRight: scaffoldBlockPxWidth * scaffoldBlockCount }}
             >
                 {Children.map(children, child => cloneElement(child, {
                     isOver,

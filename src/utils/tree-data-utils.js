@@ -518,7 +518,7 @@ export function addNodeUnderParent({
 }) {
     if (parentKey === null) {
         return {
-            treeData: [ ...(treeData || []), newNode],
+            treeData: [ newNode, ...(treeData || [])],
             treeIndex: (treeData || []).length,
         };
     }
